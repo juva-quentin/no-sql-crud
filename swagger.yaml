@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  description: Documentation de l'API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000 
+paths:
+  /import:
+    post:
+      description: Importer les données depuis un fichier CSV
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cheminFichierCSV:
+                  type: string
+              required:
+                - cheminFichierCSV
+      responses:
+        '200':
+          description: Succès
+        '500':
+          description: Erreur interne du serveur
+  /object:
+    post:
+      description: Créer un nouvel objet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Object'
+      responses:
+        '200':
+          description: Succès
+        '400':
+          description: Requête invalide
+        '500':
+          description: Erreur interne du serveur
+    get:
+      description: Lire les données
+      responses:
+        '200':
+          description: Succès
+        '500':
+          description: Erreur interne du serveur
+  /object/{id}:
+    get:
+      description: Récupérer un document spécifique
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID du document
+      responses:
+        '200':
+          description: Succès
+        '404':
+          description: Document non trouvé
+        '500':
+          description: Erreur lors de la récupération du document
+    put:
+      description: Mettre à jour une donnée
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID du document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Object'
+      responses:
+        '200':
+          description: Succès
+        '500':
+          description: Erreur interne du serveur
+    delete:
+      description: Supprimer une donnée
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID du document
+      responses:
+        '200':
+          description: Succès
+        '500':
+          description: Erreur interne du serveur
+  /object/max-occurrences/{param}:
+    get:
+      description: Récupérer un document avec une occurrence maximale
+      parameters:
+        - in: path
+          name: param
+          schema:
+            type: string
+          required: true
+          description: Paramètre pour l'occurrence maximale
+      responses:
+        '200':
+          description: Succès
+        '500':
+          description: Erreur interne du serveur
+components:
+  schemas:
+    Object:
+      type: object
+      properties:
+        country:
+          type: string
+        departement:
+          type: string
+        name:
+          type: string
+        adress:
+          type: string
+        tel:
+          type: string
+        title:
+          type: string
+        realAdress:
+          type: string
+        email:
+          type: string
+          format: email

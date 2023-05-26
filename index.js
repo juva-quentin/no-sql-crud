@@ -76,6 +76,23 @@ function dataImport(cheminFichierCSV) {
   
   
 
+  function readDataWithId(id) {
+    db.doc(id)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log('Document trouvé:', doc.id, '=>', doc.data());
+      } else {
+        console.log('Document non trouvé.');
+      }
+      menu();
+    })
+    .catch((erreur) => {
+      console.error('Erreur lors de la lecture du document :', erreur);
+      menu();
+    });
+  }
+
 
 function readData() {
   var i = 0
@@ -145,9 +162,10 @@ function menu() {
   console.log("1. Importer les données du fichier CSV");
   console.log("2. Créer un nouvel objet");
   console.log("3. Lire les données");
-  console.log("4. Mettre à jour une donnée");
-  console.log("5. Supprimer une donnée");
-  console.log("6. Quitter");
+  console.log("4. Lire une donnée");
+  console.log("5. Mettre à jour une donnée");
+  console.log("6. Supprimer une donnée");
+  console.log("7. Quitter");
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -176,6 +194,15 @@ function menu() {
         break;
       case "4":
         rl.question(
+          "Veuillez saisir l'ID du document à lire : ",
+          (id) => {
+            readDataWithId(id);
+            rl.close();
+          }
+        );
+        break;
+      case "5":
+        rl.question(
           "Veuillez saisir l'ID du document à mettre à jour : ",
           (id) => {
             rl.question(
@@ -194,13 +221,13 @@ function menu() {
           }
         );
         break;
-      case "5":
+      case "6":
         rl.question("Veuillez saisir l'ID du document à supprimer : ", (id) => {
           deleteData(id);
           rl.close();
         });
         break;
-      case "6":
+      case "7":
         rl.close();
         break;
       default:

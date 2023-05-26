@@ -74,3 +74,14 @@ brew install git
 	```bash
 	node index.js          
 	```
+
+## Utiliser le serveur API
+
+1. Une fois le projet cloné, il faut installer les dépendances nécessaires pour firebase :
+	```bash
+	npm install firebase-admin fs readline express csv-parser joi
+2. Lancer le projet :
+	```bash
+	node server.js          
+	```
+3. Ensuite, via le swagger.yaml, en l'important sur postman ou via https://editor.swagger.io/ , vous pouvez faire des appels a la bdd via L'API
