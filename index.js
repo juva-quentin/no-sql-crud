@@ -78,10 +78,11 @@ function dataImport(cheminFichierCSV) {
 
 
 function readData() {
+  var i = 0
   db.get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, "=>", doc.data());
+        console.log(i++, doc.id, "=>", doc.data());
       });
       menu();
     })
