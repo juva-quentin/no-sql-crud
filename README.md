@@ -58,7 +58,25 @@ brew install git
     
 5.  Ajoutez la clé SSH à votre compte sur GitHub. Pour plus d’informations, consultez « [Ajout d’une nouvelle clé SSH à votre compte GitHub](https://docs.github.com/fr/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) ».
 
+## Création db firestore
 
+1. Aller sur https://firebase.google.com
+
+2. Cliquer sur Get strated puis sur Ajouter un projet
+
+3. Ensuite donner lui le nom que vous souhaitez et cliquer sur continer puis creer le projet
+
+4. Une fois le projet créé, cliquer dans la nav-bar de gauche sur "Créer" puis "Cloud Firestore"
+
+5. Créer un base de données, démmarer la en mode test, cliquer sur suivant et choisiser un emplacement puis "Activer"
+
+## Création de la serviceAccounteKey.json
+
+1. Sur firebase, aller dans l'onglet parametres du projet via l'engrenage en haut à gauche 
+
+2. Puis dans l'onglet "Comptes de service", dans SDK Admin Firebase, sélectionner Node.js et cliquer sur Générer une nouvelle clé privée
+
+3. Une fois la clé téléchargée, vérifier bien quelle se nomme serviceAccountKey.json et placer la dans la racine du projet
 
 ## Utiliser le crud
 

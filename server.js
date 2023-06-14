@@ -6,7 +6,7 @@ const readline = require("readline");
 const csvparser = require("csv-parser");
 const Joi = require("joi");
 
-const serviceAccount = require("./serviceAccountKey2.json");
+const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
